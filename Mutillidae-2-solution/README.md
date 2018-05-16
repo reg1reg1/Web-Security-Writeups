@@ -45,14 +45,17 @@ the<br>port in httpd.conf file</li>
 
 
 
-<h4>Note</h4>
-A lot of solutions here , are inspired by my own tamperings and findings. </br>
-Please note that , for many vulnerabilites such as PHP null byte injection, use <b>PHP 5 or lower</b></br>
-If you install Ubuntu 16 and above, it will ship with <b>PHP 7.x</b> and you will find a lot of pain trying to install PHP 5.0 (removed from ubuntu sources for 16+).
+<h3><u><b>Note</b></u></h3>
+<ol>
+<li>A lot of solutions here , are inspired by my own tamperings and findings. </li>
+<li>Please note that , for many vulnerabilites such as PHP null byte injection, use <b>PHP 5 or lower</b></li>
+<li>If you install Ubuntu 16 and above, it will ship with <b>PHP 7.x</b> and you will find a lot of pain trying to install PHP 5.0 (removed from ubuntu sources for 16+).</li>
+<li> For some attacks, you have to turn on the allow_url_include in php global configuration, and you can enable allow_url_include from php.ini
+<pre>
+ /etc/php7/apache2/php.ini
 
-I recommend use wamp and deploy mutillidae 2 on a winxp machine
-For the attacking machine , I recommend Backtrack (4+) or much better still,latest stable Kali Linux.
-
+allow_url_include = On
+</pre>
 
 
 I will keep adding more solutions as I find them.
