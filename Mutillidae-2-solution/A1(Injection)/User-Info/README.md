@@ -16,7 +16,7 @@ This causes the <i>"WHERE"<i> clause to return true and all the user details are
 	<li>Manually enter values into browser</li>
 	<ul>
 		<li>Will be prevented by Client side scripting(Stupid Level 2)</li>
-		<<li>Not hackery enough, doesn't give you the feel good</li>
+		<li>Not hackery enough, doesn't give you the feel good</li>
 	</ul>
 	<li>
 		Use a good'ol script that behaves like a browser. Attached the most simple script possible in pytnon
