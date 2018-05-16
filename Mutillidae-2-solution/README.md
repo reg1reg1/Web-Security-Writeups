@@ -56,7 +56,8 @@ the<br>port in httpd.conf file</li>
 
 allow_url_include = On
 </pre>
-
+</li>
+</ol>
 
 I will keep adding more solutions as I find them.
 
