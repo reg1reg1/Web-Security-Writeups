@@ -21,7 +21,6 @@ This causes the <i>"WHERE"<i> clause to return true and all the user details are
 	<li>
 		Use a good'ol script that behaves like a browser. Attached the most simple script possible in pytnon
 		using Mechanize. (sqlinjection.py). It can be modified to be bit smart and adaptive. For now it snipes on the User Info page.
-
 	</li>
 	<li>
 		Use the grand daddy SQLMap tool. How to use sqlmap can be found by reading the man page.
