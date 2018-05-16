@@ -3,7 +3,7 @@
 
 <p>Easily modifiable, and hackable.
 This one breaks down with the simplest and most trivial, <i><b>a' or 1=1</b></i>.
-This causes the <i>"WHERE"<i> clause to return true and all the user details are displayed without any hassle. We have successfully used SQLINJECTION to get our hands on sensitive data.
+This causes the <i>"WHERE"</i> clause to return true and all the user details are displayed without any hassle. We have successfully used SQLINJECTION to get our hands on sensitive data.
 </p>
 
 <p>
