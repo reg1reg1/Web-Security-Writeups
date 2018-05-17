@@ -1,8 +1,9 @@
 # A1
-<h2>User Info</h2>
+<h2>Extracting Data</h2>
 
 <p>We are dealing with a case of SQL Injection here. So we need to escape the intended context and fetch all users.
-This one breaks down with the simplest and most trivial, <i><b>a' or 1=1</b></i>. Mutillidae2 fetches error messages from the database, and hence you know what query is being run. In the real world, most of the SQL injection attacks that work are blind or inference based.
+This one breaks down with the simplest and most trivial, <i><b>a' or 1=1</b></i>.
+The puprose of this attack is to extract data. Inferencing the query structure from the output returned by server is key to executing the attack.
 This causes the <i>"WHERE"</i> clause to return true and all the user details are displayed without any hassle. We have successfully used SQLINJECTION to get our hands on sensitive data.
 </p>
 
