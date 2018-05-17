@@ -2,16 +2,18 @@
 <h2>User Info</h2>
 
 <p>We are dealing with a case of SQL Injection here. So we need to escape the intended context and fetch all users.
-This one breaks down with the simplest and most trivial, <i><b>a' or 1=1</b></i>.
+This one breaks down with the simplest and most trivial, <i><b>a' or 1=1</b></i>. Mutillidae2 fetches error messages from the database, and hence you know what query is being run. In the real world, most of the SQL injection attacks that work are blind or inference based.
 This causes the <i>"WHERE"</i> clause to return true and all the user details are displayed without any hassle. We have successfully used SQLINJECTION to get our hands on sensitive data.
 </p>
 
 <h3>Note</h3>
-Please do not go about trying inserting SQL injection based input on webistes not owned by you, or sites on which you do not have permissions to perform tests on. Modern architectures have IDS setup which will monitor suspicious activity ,and report your IP. 
+<p>Please do not go about trying inserting SQL injection based input on webistes not owned by you, or sites on which you do not have permissions to perform tests on. Modern architectures have IDS setup which will monitor suspicious activity ,and report your IP.
+</p>
+Also, Mutillidae2 presents to you the SQL injection on a plate, including displaying error messages. In the real world, lot of mapping, pruning and scanning is required before any vulnerability is identified.
 
 <h3>Execution</h3>
 <ol>
-	<li>Manually submit values via browser interface
+	<li>Manually submit values via browser interface, i.e username=<b>a'or 1 = 1</b>. However, level 2 will fail as the Javascript will prevent this. Hence the script will bypass this client side defense.
 	<ul>
 		<li>Will be prevented by Client side scripting(Stupid Level 2)</li>
 		<li>Not hackery enough, doesn't give you the feel good</li>
