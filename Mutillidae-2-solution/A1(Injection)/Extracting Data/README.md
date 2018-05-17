@@ -1,5 +1,5 @@
 # A1
-<h2>User Info</h2>
+<h2>Extracting Data</h2>
 
 <p>We are dealing with a case of SQL Injection here. So we need to escape the intended context and fetch all users.
 This one breaks down with the simplest and most trivial, <i><b>a' or 1=1</b></i>.
