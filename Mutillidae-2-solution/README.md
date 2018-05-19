@@ -2,7 +2,7 @@
 <h3>Description</h3>
 
 <p>Mutillidae 2 is a better and more feature laden version of prior mutillidae </br>
-It is developed by Jeremy Druin. He is a Certified Lead security analyst, and explains a lot of stuff very clearly. He has a channel on youtube <a href="https://www.youtube.com/user/webpwnized!"> webpwnized </a>
+It is developed by Jeremy Druin. He is a Certified Lead security analyst, and explains a lot of stuff very clearly. He has a channel on youtube <a href="https://www.youtube.com/user/webpwnized"> webpwnized </a>
 and has exhaustive videos on WebApp Security and a ton of other stuff.
 Everyone should definitely check him out.
 

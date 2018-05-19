@@ -1,17 +1,23 @@
-# A1
-<h2>Extracting Data</h2>
-
-<p>We are dealing with a case of SQL Injection here. So we need to escape the intended context and fetch all users.
-This one breaks down with the simplest and most trivial, <i><b>a' or 1=1</b></i>.
-This causes the <i>"WHERE"</i> clause to return true and all the user details are displayed without any hassle. We have successfully used SQLINJECTION to get our hands on sensitive data.
+<h1>SQL Injection</h1>
+<p> SQL injection is when the User Input Data injects something that uses the context interpretation of that entered data to the attacker's advantage. It can do anything from leaking useful data like password hashes to destroying the entire database or spawn an OS shell to the attacker, if unchecked. It still remains as one of the most potent form of injections that a site can be vulnerable to as it attacks a backend datastore.
 </p>
-
+<h2> Identification</h2>
+<p> Identifying the SQL injection points are the first step, every point must be checked and marked that one encounters during reconnaisance or crawling, sitemap generation etc. Key areas could be.
+	<ol>
+		<li>Form submissions, registrations, change password etc</li>
+		<li>GET URL's typically pagination requests</li>
+		<li>Ajax requests behind the scenes that periodically submit user data</li>
+		<li>Feedback or comment forms in shopping sites</li>
+		<li>User-Agent might be getting logged somewhere in DB, try to inject that as well</li>
+	</ol>
+<h2>Execution</h2>
 <p>
-	<h3>Note</h3>
-	Please do not go about trying inserting SQL injection based input on webistes not owned by you, or sites on which you do not have permissions to perform tests on. Modern architectures have IDS setup which will monitor suspicious activity ,and report your IP. 
+After identifying a suitable entry point, begin your attack. It goes without saying that ensure you have full permission to perform the attack, and the client has backup of the datastore or any crucial data, as the attack could have unforseen consequences. Here we are going to practice on CTF Mutillidae2 so this can be kept aside for now.
+</p>
+<p>You can attack manually and when some info is revealed ,you may proceed for tools or other complex types of attack. There is no checklist , hacking is all about creativity and above all patience.
+So keep digging away until you're sure that the injection point is protected.
 </p>
 
-<h3>Execution</h3>
 <ol>
 	<li>Manually submit values via browser interface</li>
 	<ul>
@@ -20,7 +26,7 @@ This causes the <i>"WHERE"</i> clause to return true and all the user details ar
 	</ul>
 	<li>
 		Use a good'ol script that behaves like a browser. Attached the most simple script possible in pytnon
-		using Mechanize. (sqlinjection.py). It can be modified to be bit smart and adaptive. For now it snipes on the User Info page.
+		using Mechanize. (sqlinjection.py) for the User-Info challenge.
 	</li>
 	<li>
 		Use the grand daddy SQLMap tool. More on how to use sqlmap can be found by reading the man page.

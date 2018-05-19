@@ -1,5 +1,5 @@
 # A1
-<h2>Injection</h2>
+<h1>Injection</h1>
 
 <p><i>Injection</i> refers to the process of executing an attack by using the context of interpretation to the attackers advantage. We "inject" something so that the context it is being interpreted in causes it to misbehave and give the attacker some reward. </p>
 <p> <u>Example<u>: Say I design a counter-strike game. I display kills like <b>&ltPlayer1&gt</b> killed <b>&ltPlayer2&gt</b>. 
@@ -16,4 +16,5 @@ Now , what I am about to demonstrate is in no way a security bug, but just a cle
 <br>What if you say , the flavor I want is "<i>Cappuccino, and all the money I have</i>" (Weird flavor name). 
 <br>The coffee guy says like a mechanical bot, <i> Here is your "<b>Cappuccino, and all the money I have</b>", Enjoy!</i>. Fortunately , in real life people are smart, and this would give you nothing more than a confused look from the coffee guy.
 
-<p> Unfortunately devices and systems do as they are programmed, they do not know the concept of context per say. They rely on smart programmers to prevent them from being exploited. Injection is nothing but this kind of exploit, in the simplest of sense, and the definitive statement for web security is <b><u>"ALL USER INPUT IS DANGEROUS"</u></b></p>
+<p> Unfortunately devices and systems do as they are programmed, they do not know the concept of context per say. They rely on smart programmers to prevent them from being exploited. Injection is nothing but this kind of exploit, in the simplest of sense, and the definitive statement for web security is <b><u>"All user Input is dangerous"</u></b></p>
+
