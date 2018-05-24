@@ -64,3 +64,37 @@ locate sqlmap.py
 </li>
 </li>
 </ol>
+<h2> Different Attack Purpose</h2>
+<h3> Extracting Data </h3>
+<p>Aim is to extract data via SQL injection, typically attacking inputs where there is a probable of SQL SELECT statement in the background. Attacking Mutillidae2. The demo shown under Execution covers this and also the sqlinjection.py which cracks the injection. At Level 5, Mutillidae2 should be unbreakable, so any hacks found should be reported as bug to the developer.</p>
+
+<h3>Bypasing Authentication</h3>
+
+<p>Typical statements where, authentication can be bypassed as an example of SQL injection</p>
+A mechanism to bypass authentication via injecting login. Attack via simple command, and try to guess admin username. You can attack via SQLMap, but for learning sake we are gonna manually pass the parameters. On level 2, this method can be used via proxy tool of your choice.
+
+
+So bypassing the login in Mutillidae2 is pretty easy-peezy lemon squeazy. You just inject the good'ol string <b><i>admin' or 1=1#</i></b>.
+
+<h3> Insert based Injection </h3>
+
+Upon identifying an Insert based injection, it is important to know that he Insert statement is the best place to perform what is called a second order SQL Injection if the condition is right.
+We can always use the Insert statement to bypass the entries in the database which should not be possible in otherwise normal case.  In Mutillidae2 , the Insert based injection causes the query to break, hence we cannot work with Second order SQL Injection.
+Insert SQL statement has this structure. Our injection could be any one or more of the values.
+<pre>INSERT INTO blahTABLE(col1,col2,col3) VALUES(val1,val1,val2)</pre>
+<p>The values must match the number of columns and also the datatype. We may not always know the number of paramaters before hand, or what type is required by the database.</p><p>Fortunately this shortcoming can be easily bypassed. 
+The trick is to start by hit and trial method for the number of parameters, and the type check can be bypassed by using an Integer as it is typecasted into a string by most databases.
+Attempts could look like following to guess the number of parameters until the attack is successfull.
+<pre>
+xxx') -- 
+xxx',1) -- 
+xxx',1) -- 
+</pre>
+The mutillidae2 solution is to forge a date into the blog, which should be non existent.
+<ol>
+	<li>
+		The blog page can be SQL injected to change the date of the blog, the Insert statement can be easily injected by using this query.
+		<pre>I have some aladeen news','2019-09-09 00:00:00')#</pre>
+	</li>
+</ol>
+</p>
