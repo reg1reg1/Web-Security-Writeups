@@ -68,7 +68,7 @@ locate sqlmap.py
 <h3> Extracting Data </h3>
 <p>Aim is to extract data via SQL injection, typically attacking inputs where there is a probable of SQL SELECT statement in the background. Attacking Mutillidae2. The demo shown under Execution covers this and also the sqlinjection.py which cracks the injection. At Level 5, Mutillidae2 should be unbreakable, so any hacks found should be reported as bug to the developer.</p>
 
-<h3>Bypasing Authentication</h3>
+<h3>1.Bypasing Authentication</h3>
 
 <p>Typical statements where, authentication can be bypassed as an example of SQL injection</p>
 A mechanism to bypass authentication via injecting login. Attack via simple command, and try to guess admin username. You can attack via SQLMap, but for learning sake we are gonna manually pass the parameters. On level 2, this method can be used via proxy tool of your choice.
@@ -76,7 +76,7 @@ A mechanism to bypass authentication via injecting login. Attack via simple comm
 
 So bypassing the login in Mutillidae2 is pretty easy-peezy lemon squeazy. You just inject the good'ol string <b><i>admin' or 1=1#</i></b>.
 
-<h3> Insert based Injection </h3>
+<h3>2.Insert based Injection </h3>
 
 Upon identifying an Insert based injection, it is important to know that he Insert statement is the best place to perform what is called a second order SQL Injection if the condition is right.
 We can always use the Insert statement to bypass the entries in the database which should not be possible in otherwise normal case.  In Mutillidae2 , the Insert based injection causes the query to break, hence we cannot work with Second order SQL Injection.
@@ -88,13 +88,34 @@ Attempts could look like following to guess the number of parameters until the a
 <pre>
 xxx') -- 
 xxx',1) -- 
-xxx',1) -- 
+xxx',1,1) -- 
 </pre>
+and so on , until you guess the right number of columns that exist. A similar kind of trick can be used with UNION statements to guess the number of columns and their datatypes.
+
 The mutillidae2 solution is to forge a date into the blog, which should be non existent.
 <ol>
 	<li>
-		The blog page can be SQL injected to change the date of the blog, the Insert statement can be easily injected by using this query.
+		<b>Add to your blog page<b> can be SQL injected to change the date of the blog, the Insert statement can be easily injected by using this query.  
 		<pre>I have some aladeen news','2019-09-09 00:00:00')#</pre>
+		<b>Note: I have been trying for a Second order injection, but have not been able to do it</b>
+		<p>The user is taken from the cookie and PHPSESSID and unforgeable, so we are left only with the option of the date which only accepts a date and the string of the blog</p>.
+		<p>I have so far managed to pull off an error based injection. I am still looking for a way to post the results of the injected SELECT query into the blog itself but haven't been successful
+		Adding the below into the blog, we get an error message notifying us of the password of the user admin, and that it does not qualify for a date.
+		</p>
+		<pre>
+			hacker',(SELECT password FROM accounts WHERE username LIKE '%admin' ))#
+		</pre>
+
+	</li>
+	<li>
+		<b>Register yourself page</b>
+		You can register by using data from other columns as one of the fields. We cannot however read from <b>the same table</b> we are INSERTING into. Hence unfortunately we cannot read from the accounts table (containing username and password). We can however get crucial column Name by using these. We are targeting the metainfo stored in <b>information_schema </b>. In Oracle we would target all_tabs_columns. 
+		Put the following in the username field of registration page. The field we are injected into is the signature field. Since we cannot read from accounts , we can definitely try to read from the vulnerable <b><i>mysql.user</i></b>. The first two queries are when you want to scan the tables for columns. 
+		<pre>
+			hacker','1',(SELECT column_name from information_schema.columns where table_name='accounts' and column_name LIKE '%user%' LIMIT 1))#
+			hacker','1',(SELECT column_name from information_schema.columns where table_name='accounts' and column_name LIKE '%pass%' LIMIT 1))#
+			hacker','1',(select password from mysql.user where user=’root’ LIMIT 0,1)#
+		</pre>  
 	</li>
 </ol>
 </p>
