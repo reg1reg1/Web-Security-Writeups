@@ -95,7 +95,7 @@ and so on , until you guess the right number of columns that exist. A similar ki
 The mutillidae2 solution is to forge a date into the blog, which should be non existent.
 <ol>
 	<li>
-		<b>Add to your blog page<b> can be SQL injected to change the date of the blog, the Insert statement can be easily injected by using this query.  
+		<b>Add to your blog page</b> can be SQL injected to change the date of the blog, the Insert statement can be easily injected by using this query.  
 		<pre>I have some aladeen news','2019-09-09 00:00:00')#</pre>
 		<b>Note: I have been trying for a Second order injection, but have not been able to do it</b>
 		<p>The user is taken from the cookie and PHPSESSID and unforgeable, so we are left only with the option of the date which only accepts a date and the string of the blog</p>.
@@ -105,7 +105,6 @@ The mutillidae2 solution is to forge a date into the blog, which should be non e
 		<pre>
 			hacker',(SELECT password FROM accounts WHERE username LIKE '%admin' ))#
 		</pre>
-
 	</li>
 	<li>
 		<b>Register yourself page</b>
