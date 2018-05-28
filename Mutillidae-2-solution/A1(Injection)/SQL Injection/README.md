@@ -160,13 +160,13 @@ User-Agent: Apache-HttpClient/4.1.1 (java 1.5)
 </soapenv:Envelope>
 </pre>
 	</p>
-		<h3>5.Blind SQL Injection/Timing based</b>
+		<h3>5.Blind SQL Injection/Timing based</h3>
 		<p>
 		This is the sleep based attack on MySQL
 		On earlier versions the sleep function does not exist , instead the benchmark function can be used for the same.The trick is to inference from the time taken by server to respond,we can get to know about the result even if the server does not show error messages or responses back to us. We can use a scripted attack to guess the password of admin user if the endpoint is SQL vulnerable.
 		If the response is delayed by 5 seconds, we can be sure we have guessed the correct admin pass.
 		<pre>
-		admin' and if(password='adminpass', sleep(5), false)#	
+admin' and if(password='adminpass', sleep(5), false)#	
 		</pre>
 		Using a scripted attack, we can do wonders with this
 		<b> Note</b><br> 
@@ -174,5 +174,4 @@ User-Agent: Apache-HttpClient/4.1.1 (java 1.5)
 		2.In MS-SQL the function used is 'wait for delay'. <br>
 		3.In Oracle, there is no such delay function, however you can try to connect to a non-valid server
 		<br>using URL_HTTP method to simulate the conditional timeout.
-
 </p>
