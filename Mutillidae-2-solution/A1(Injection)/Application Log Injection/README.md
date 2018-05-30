@@ -14,4 +14,29 @@ One of them is the capture-data.php page which writes the incoming request data,
 
 Mutillidae lists the points of Application Log injections as follows. Though these pages are vulnerable to a whole lot of other attacks, our aim here is to perform application log injection.
 <b>Note:</b>Almost all pages in Mutillidae2 can be exploited by XSS.
+</p>
 
+<b>show-log.php</b>
+<p>This page records every action of user on various pages. The primary pages that are recorded here are
+as follows. We are only interested in attacking show-log.php so we will ignore other possible attacks such as Path Traversal, Command Injection, File Inclusion etc.
+<ol>
+	<li>DNS Lookup</li>
+	<li>Text Viewer</li>
+	<li>Source Viewer</li>
+	<li>Document Viewer</li>
+	<li>Register User</li>
+	<li>Login</li>
+	<li>Add to your blog</li>
+</ol>
+The show-log.php is not SQL injectable, and neither will PHP code injection be successful. PHP code injection is successful only with a select class of PHP functions such as eval. However, <b>show-log.php</b>
+does not include any file remotely, or locally and hence we arrive at <b>XSS injection</b> as show-log.php does not encode any HTML characters whatsoever, making way for full blown Cross-site attack.
+</p>
+<p>The methodology of the attack remains the same for all the pages. Attacked the register user page.
+Intercept the outgoing request from the web page using BurpSuite.
+We inject into the browser agent this:
+<pre>
+<script>alert(document.cookie)</script>
+</pre>
+<b>Note</b>
+You may also create a genuine looking popup modal stating session expiry,and steal the entered credentials when entered.
+</p>
