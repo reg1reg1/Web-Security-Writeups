@@ -5,14 +5,14 @@ They can be found here.
 <ul>
 	<li><h2>Challenge 1</h2>
 		<p> As simple as it gets, simple XSS injection with plain old javascript</p>
-		<pre>&ltscript&gtalert(1)&lt/script&gt&lt/pre&gt
+		<pre>&ltscript&gtalert(1)&lt/script&gt</pre>
 		</li>
 <li><h2>Challenge 2</h2>
 <p> Simple attack won't work here,as they are escaping the '&lt' and '&gt' symbols. So we can
 	use and inject the attributes. This can be done by using the value tag's value to your advantage.
 	I have used the onmouseover as many developers blacklist the onload attribute.
 	<pre>
-		&lth1&gt onmouseover="alert(1)"voila&lt/h1&gt
+&lth1&gt onmouseover="alert(1)"voila&lt/h1&gt
 	</pre>
 </p>
 </li>
@@ -21,8 +21,8 @@ They can be found here.
 url of src by using an invalid url and a<b>'</b>and then inject an onerror attribute to cause the alert.
 Also, not forgetting that this pseudo browser interface is primitive and won't encode the URL automatically, so encoding the injected URL as well.
 <pre>
-	'onerror="alert(1)"/>
-	Base64 encoded: %27onerror%3D%22alert%281%29%22%2F%3E
+'onerror="alert(1)"/>
+Base64 encoded: %27onerror%3D%22alert%281%29%22%2F%3E
 </pre>
 </p>
 </li>
