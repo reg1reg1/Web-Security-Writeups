@@ -1,18 +1,18 @@
 <h1>Google xss Challenges</h1>
 <p> To spread XSS awareness, Google created 6 XSS challenges.</p>
 They can be found here. 
-<a href="https://xss-game.appspot.com/">
-<ol>
+<a href="https://xss-game.appspot.com/">"https://xss-game.appspot.com/"</a>
+<ul>
 	<li><h2>Challenge 1</h2>
 		<p> As simple as it gets, simple XSS injection with plain old javascript</p>
-		<pre><script>alert(1)</script></pre>
+		<pre>&ltscript&gtalert(1)&lt/script&gt&lt/pre&gt
 		</li>
 <li><h2>Challenge 2</h2>
 <p> Simple attack won't work here,as they are escaping the '&lt' and '&gt' symbols. So we can
 	use and inject the attributes. This can be done by using the value tag's value to your advantage.
 	I have used the onmouseover as many developers blacklist the onload attribute.
 	<pre>
-		<h1 onmouseover="alert(1)"> voila</h1>
+		&lth1&gt onmouseover="alert(1)"voila&lt/h1&gt
 	</pre>
 </p>
 </li>
@@ -57,9 +57,9 @@ javascript:alert(1)
 		<a href="http://klevjers.com/papers/phishing.pdf">Paper PDF Link</a>
 		Once this is known, the injection becomes easy.
 		<pre>
-			data:text/javascript,alert(1)
+data:text/javascript,alert(1)
 		</pre>
 	</p>
 </li>
-</ol>
+</ul>
 
