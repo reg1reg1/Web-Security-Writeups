@@ -53,13 +53,11 @@ Deploying a Meterpreter shell is one way to create a well obfuscated persisitent
 		<li><h3>Basic</h3>
 		<p>Simple case, where the input fields visible are vulnerable to HTML injection. You may use any of the web pages, <b>"Add to your Blog"</b> is what I have exploited. Make sure not to use single quotes or else the SQL query will explode</p>
 		<pre>
-			<code>
-<form action="/attacked">
-<input name="user"/>
-<input id='ps' type="password" name="pass"/>
-<button type="submit">Register</button>
-</form>
-</code>
+&ltform action="/attacked"&gt
+&ltinput name="user"/&gt
+&ltinput id='ps' type="password" name="pass"/&gt
+&ltbutton type="submit"&gtRegister&lt/button&gt
+&lt/form&gt
 		</pre>
 	</li>
 	<li>
