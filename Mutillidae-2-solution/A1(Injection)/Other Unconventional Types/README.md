@@ -45,6 +45,35 @@ Deploying a Meterpreter shell is one way to create a well obfuscated persisitent
 	</pre> 
 </li>
 <li><h2>HTML Injection </h2>
+	When there is a vulnerability in the application which allow you to inject HTML into code.
+	This can cause the client to visit a vulnerable "GET" URL and steal Non-http cookies or reveal csrf token to an attacker via an Ajax request. There are a multitude ways this can be exploited.
+</br>
+	Also, some of these require different contexts , such as those when modifying things such as the HTTP headers, as the victim will not change these to attack himself if the HTML injected is not stored but reflected back. In case of submissions via POST request, the POST requests now can be stored in a clickable link which can be visited via DATA URI.Also, if a site is vulnerable to HTMLi ,it most likely is vulnerable to Javascript Injection as well 
+	<ul>
+		<li><h3>Basic</h3>
+		<p>Simple case, where the input fields visible are vulnerable to HTML injection. You may use any of the web pages, <b>"Add to your Blog"</b> is what I have exploited. Make sure not to use single quotes or else the SQL query will explode</p>
+		<pre>
+<form action="/attacked">
+<input name="user"/>
+<input id='ps' type="password" name="pass"/>
+<button type="submit">Register</button>
+</form>
+		</pre>
+	</li>
+	<li>
+		<h3>Via HTTP Headers</h3>
+		<p>
+			These exploits can work under a man in the middle the attack, or a clever manipulation of the iframe header to load the web page silently in the background. The target page here is DNS lookup page. We must always check the context and filters on the 
+			Using Burp intercept the outgoing request.
+		</p>
+		<pre>
+		</pre>
+	</li>
+	<li>DOM Manipulation</li>
+	<li>Cookie Manipulation</li>
+	<li>HTTP Parameter Pollution</li>
+	</ul>
 </li>
+
 
 

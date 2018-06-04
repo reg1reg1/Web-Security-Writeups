@@ -1,7 +1,7 @@
 <h1>Google xss Challenges</h1>
 <p> To spread XSS awareness, Google created 6 XSS challenges.</p>
 They can be found here. 
-<a href="https://xss-game.appspot.com/">"https://xss-game.appspot.com/"</a>
+<a href="https://xss-game.appspot.com/">https://xss-game.appspot.com/</a>
 <ul>
 	<li><h2>Challenge 1</h2>
 		<p> As simple as it gets, simple XSS injection with plain old javascript</p>
