@@ -85,16 +85,11 @@ Deploying a Meterpreter shell is one way to create a well obfuscated persisitent
 <p>We do an MITM, and then modify the victim's cookie to be something that causes an HTML injection.
 We can inject into the cookies, and if the website reflects some of the cookie, say the time or some user preference such as Nick, we can cause the a reflected injection. However such an attack would most definitely require the context of man in the middle attack or some tricks with iframe and meta tag.
 </p>
-	
-	</li>
-
+</li>
 	<li><h3>HTTP Parameter Pollution</h3>
 	<p>HTTP parameter pollution is just a method to repeat HTTP parameters and carry out a malicious attack.HTTP standards do not specify how a server should handle repeated parameters. While carrying out an attack, we can use this technique to bypass setting up some IDS, if the repeated parameter value, is concatenated by the backend server to have the desired payload. It is not a standalone attack</p>
-
-
 	</li> 
-
-	<li><h3>DOM Manipulation</h3>
+<li><h3>DOM Manipulation</h3>
 		We manipulate the DOM things such as Web Storage. 
 		Web storage provides larger storage than cookies and follows the same origin policies. It can be accessed via javascript, and is a HTML5 w3 standard. What it means is one site cannot modify or access the web storage for other site, if their origin is different.Also, this can be done via Javascript or some malicious browser extension. Secondly, for the injection via WebDOM to work the Web Storage must be reflected somewhere on the page unsanitized. The localstorage object persists until manually removed, and the session storage object is deleted, once the user closes the browser window(It is valid for one session of the browser).
 		<br>
@@ -141,7 +136,7 @@ To exploit this attack , we need to cause a memory overload of the XML parser su
 		<pre>
 //Employee[UserName='a" or 1=1 ' and Password='']
 		</pre>
-		The payload shall be as follows for <b>both username and password</b>
+		The payload shall be as follows for <b>both username and password</b> fields.
 		<pre>
 a' or '1'='1'
 		</pre>
