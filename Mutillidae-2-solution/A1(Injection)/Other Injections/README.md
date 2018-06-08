@@ -83,7 +83,7 @@ Deploying a Meterpreter shell is one way to create a well obfuscated persisitent
 	</li>
 	<li><h3>Cookie Manipulation</h3>
 <p>We do an MITM, and then modify the victim's cookie to be something that causes an HTML injection.
-We can inject into the cookies, and if the website reflects some of the cookie, say the time or some user preference such as Nick, we can cause the a reflected injection. However such an attack would most definitely require the context of man in the middle attack or some tricks with iframe and meta tag.
+We can inject into the cookies, and if the website reflects some of the cookie, say the time or some user preference such as Nick, we can cause the a reflected injection. However such an attack would most definitely require the context of man in the middle attack or some tricks with iframe.
 </p>
 </li>
 	<li><h3>HTTP Parameter Pollution</h3>
