@@ -135,6 +135,17 @@ To exploit this attack , we need to cause a memory overload of the XML parser su
 </li>
 </ul>
 </li>
+<li>
+	<h2>Xpath Injection</h2>
+	<p>Xpath is a kind of way of querying XML data. There are certain syntactical nuances which one must understand before exploiting Xpath.  On first glance a query violating Xpath or causing Xpath injection appears to be same as the one that triggers the SQL injection. There are certain differences however, in the way that a XPath query is executed. Xpath queries are in a way relative, and often requires information of the parent nodes to mount a meaningful exploit even when the vulnerability is discovered. Mutillidae shows us the executed query, but in real life scenarios, we will be performing blind XPath injection.Mutillidae executes this. We can see because of the middle <b>"and"</b>, we need to inject and set both conditions as true.
+		<pre>
+//Employee[UserName='a" or 1=1 ' and Password='']
+		</pre>
+		The payload shall be as follows for <b>both username and password</b>
+		<pre>
+a' or '1'='1'
+		</pre>
+	</p>
 </li>
-</li>
+</ol>
 

@@ -40,3 +40,5 @@ We inject into the browser agent this:
 <b>Note</b>
 You may also create a genuine looking popup modal stating session expiry,and steal the entered credentials when entered.
 </p>
+<b>Capture-data.php</b>
+<p>This page can be used for a number of injection flaws such as SQL injection, Javascript injection etc. We know that this page is stored in database which is reflected by the page <b>captured-data.php</b>, and hence we can carry out SQL injection to get to the passwords of all accounts. Since the User-agent is being logged, and is a string, it can be the perfect point for the SQL injection.
