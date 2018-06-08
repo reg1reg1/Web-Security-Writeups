@@ -83,9 +83,9 @@ Deploying a Meterpreter shell is one way to create a well obfuscated persisitent
 	</li>
 	<li><h3>Cookie Manipulation</h3>
 <p>We do an MITM, and then modify the victim's cookie to be something that causes an HTML injection.
-
+We can inject into the cookies, and if the website reflects some of the cookie, say the time or some user preference such as Nick, we can cause the a reflected injection. However such an attack would most definitely require the context of man in the middle attack or some tricks with iframe and meta tag.
 </p>
-
+	
 	</li>
 
 	<li><h3>HTTP Parameter Pollution</h3>
@@ -107,9 +107,34 @@ Deploying a Meterpreter shell is one way to create a well obfuscated persisitent
 </li>
 <li><h2>Javascript injection</h2>
 <p>
-	Same technique of exiting the context but instead of the HTML we would be injecting javascript. A Javascript injection attack is also known as XSS. 
+	Same technique of exiting the context but instead of the HTML we would be injecting javascript. A Javascript injection attack is also known as XSS. Hre I am going to demonstrate the page of <b>Password Generator</b>. This page has the vulnerability in the field username, which is taken from the URL,and we can inject a javascript code into it. After examining the context, we know that the reflected output is not encoded nor sanitized in anyway. We may perform the injection by the payload mentioned below.
+	<pre>
+		document.getElementById("idUsernameInput").innerHTML = "This password is for anonymous";document.getElementById("idUsernameInput").innerHTML+='&ltform action="/attacked"&gt
+&ltinput name="user"/&gt
+&ltinput id="ps" type="password" name="pass"/&gt
+&ltbutton type="submit"&gtRegister&lt/button&gt
+&lt/form&gt';var x="p";
+	</pre>
+</p>
+<li><h2>Xml Injection</h2>
+<ul>
+	<li><h3>External Entity Injection</h3>
+
+<p>
+	Is harder than most as comments need to be ballanced, and xml parsers very strict with the XML format, unless it is a custom XML parser. The trick is to create an external entity reference and then fetch a local or remote file for nefarious purposes. Remote host file access is blocked by default, and this functionality can also be used for causing a DDOS attack by opening an infinite file stream.
+</p>
+<p>
+	In XML an external entity is like a defined variable, which can referenced in the XML document using the "&" sign. The problem is this variable resolves at the server side, and we can place file URI to exploit this and fetch sensitive server info. We target the page <b>xml-validator.php</b>, and the payload to reveal the passwd file.
+	<pre>
+		&lt;!DOCTYPE xyz [ &lt;!ENTITY abc SYSTEM &quot;../../../../../etc/passwd&quot;&gt;]&gt;&lt;somemessage&gt;&lt;message&gt;&amp;abc;&lt;/message&gt;&lt;/somemessage&gt;
+	</pre>
 </p>
 </li>
-
-
+<li><h3>External Entity Expansion</h3>
+To exploit this attack , we need to cause a memory overload of the XML parser such that it enters into an array of xml expansions and uses too much memory of ther server. We can do this recursively, and expand upon the tags causing a memory overflow and in some cases stopping the entire web application eventually. 
+</li>
+</ul>
+</li>
+</li>
+</li>
 
