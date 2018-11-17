@@ -1,20 +1,30 @@
-# A1
-<h1>Injection</h1>
+# A3
+<h1>Cross Side Scripting</h1>
 
-<p><i>Injection</i> refers to the process of executing an attack by using the context of interpretation to the attackers advantage. We "inject" something so that the context it is being interpreted in causes it to misbehave and give the attacker some reward. </p>
-<p> <u>Example<u>: Say I design a counter-strike game. I display kills like <b>&ltPlayer1&gt</b> killed <b>&ltPlayer2&gt</b>. 
-Now , what I am about to demonstrate is in no way a security bug, but just a clever hack to cause a misinterpretation of the sentence. Say Player 1 chooses his name which is something innocous like "Jack" and Player 2,chooses his name as "by Me". 
+<p><i>Cross Side scripting</i> refers to the injection of javascript into the context of the web page to attack other users who might be accessing the web page. It is usually referred to as "XSS" (CROSS S(Side) S(Scripting)). The XSS attacks can be classified into 3 main categories. XSS is the most widely known and exploited vulnerability under bug bounty hunting. 
 </p>
-<p>Now when Player1 kills Player 2, what does the message read? 
-<br>Exactly,<i>Jack</i> Killed <i>by Me</i>.Ignoring how the message will be interpreted when Player 2 kills Player 1, this message will ruin Player1's mood quite a bit.
-</p>
+<ol>
+	<li><h3>Stored XSS</h3>
+		<p>
+			Stored XSS , also referred to as persistent XSS is the scenario when the attacker manages to get the malicious to persist in the database. This is usually a severe flaw, and on succeeding the attacker can do a lot of damage.
+			The target page is chosen as <b>Add to your Blog</b>. As an attacker, (way harder in real life than what is done in Mutillidae2), we inject the blog post with a malicious XSS script. 
+			<pre>
+			Hello normal blog, &ltscript&gt alert(document.cookie)&lt/script&gt. Give me your cookies
+			</pre>
+			Now whoever visits the blog, gets the cookie alert. In the place , we can send the cookies to our page using a AJAX script in the background stealing the document.cookies of the user
+			(HTTP only cookies are still secure), but a lot of other damage can be done and affects all users. 
+		</p>
 
-<p>Injections in practice are exactly like this, taking something out of context to get/access to something we should not have.</p> 
-
-<p>If the guy at the coffee shop asks you, "Which coffee?", the expected answer from you will be a flavor , say <i> Capuccino</i>. 
-<br>What if the coffee guy is required by some weird rule to give you coffee if it exists. 
-<br>What if you say , the flavor I want is "<i>Cappuccino, and all the money I have</i>" (Weird flavor name). 
-<br>The coffee guy says like a mechanical bot, <i> Here is your "<b>Cappuccino, and all the money I have</b>", Enjoy!</i>. Fortunately , in real life people are smart, and this would give you nothing more than a confused look from the coffee guy.
-
-<p> Unfortunately devices and systems do as they are programmed, they do not know the concept of context per say. They rely on smart programmers to prevent them from being exploited. Injection is nothing but this kind of exploit, in the simplest of sense, and the definitive statement for web security is <b><u>"All user Input is dangerous"</u></b></p>
-
+	</li>
+	<li>
+		<h3>Reflected XSS</h3>
+		Also, called first order XSS injection. It is a lot more prevalent than the Stored XSS one. Using a malformed URL, (containing the polluted parameter), we can cause the injection to be sent over the url(The polluted parameter is read off the URL) and then injected into the DOM.
+		The URL needs to be sent to the malicious user, and needs the user to click on the URL.
+		The user info page is the page where a "GET" reflected XSS is possible.
+		Enter this into the URL, and let it rip.
+		<pre>
+			
+		</pre>
+	</li>
+	
+</ol>
