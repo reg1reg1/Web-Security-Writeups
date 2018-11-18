@@ -18,13 +18,18 @@
 	</li>
 	<li>
 		<h3>Reflected XSS</h3>
-		Also, called first order XSS injection. It is a lot more prevalent than the Stored XSS one. Using a malformed URL, (containing the polluted parameter), we can cause the injection to be sent over the url(The polluted parameter is read off the URL) and then injected into the DOM.
+		<p>Also, called first order XSS injection. It is a lot more prevalent than the Stored XSS one. Using a malformed URL, (containing the polluted parameter), we can cause the injection to be sent over the url(The polluted parameter is read off the URL) and then injected into the DOM.
 		The URL needs to be sent to the malicious user, and needs the user to click on the URL.
 		The user info page is the page where a "GET" reflected XSS is possible.
-		Enter this into the URL, and let it rip.
-		<pre>
-			
-		</pre>
+		The url and other fields are injectable in view-user info page to the simplest of xss attack.
+	</p>
 	</li>
-	
+	<li>
+		<h3>Reflected DOM Injection</h3>
+		<p>
+			This beautiful masterpiece of an attack was uncovered in Defcon 21, by security researchers at Trustwave spiderlabs and speakers at Defcon 21. 
+			<a href="https://www.defcon.org/html/defcon-21/dc-21-speakers.html#Chechik"/>
+
+		</p>
+	</li>
 </ol>
