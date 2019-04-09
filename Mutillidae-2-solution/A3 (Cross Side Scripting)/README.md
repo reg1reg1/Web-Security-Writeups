@@ -14,7 +14,6 @@
 			Now whoever visits the blog, gets the cookie alert. In the place , we can send the cookies to our page using a AJAX script in the background stealing the document.cookies of the user
 			(HTTP only cookies are still secure), but a lot of other damage can be done and affects all users. 
 		</p>
-
 	</li>
 	<li>
 		<h3>Reflected XSS</h3>
@@ -29,7 +28,6 @@
 		<p>
 			This beautiful masterpiece of an attack was uncovered in Defcon 21, by security researchers at Trustwave spiderlabs and speakers at Defcon 21. 
 			<a href="https://www.defcon.org/html/defcon-21/dc-21-speakers.html#Chechik"/>
-
 		</p>
 	</li>
 </ol>
