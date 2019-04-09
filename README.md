@@ -1,4 +1,4 @@
-# Web-Security-CTF
-Exploits for CTF's and Web based pentesting challenges
+# Web-Security-Writeups
+Exploits for CTF's and Web based vulnerable software such as Mutillidae
 
-This repository contain's solutions/writeups to CTF's I have solved. For some of them where the target was remote, a solution has been provided with the explanation of the scenario and the intuition behind arriving at the desired answer.
+Online writeups or web challenges will be put here. The wargames natas is in the wargames repository. Since web security is one of my favorite security domains, I created this repo just to store the web security ctf writeups as I will play them. Feel free to mail me at yuvraj.singh19@gmail.com if you find any mistakes. Thanks!
