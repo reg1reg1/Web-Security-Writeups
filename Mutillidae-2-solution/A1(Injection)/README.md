@@ -14,7 +14,7 @@ Now , what I am about to demonstrate is in no way a security bug, but just a cle
 <p>If the guy at the coffee shop asks you, "Which coffee?", the expected answer from you will be a flavor , say <i> Capuccino</i>. 
 <br>What if the coffee guy is required by some weird rule to give you coffee if it exists. 
 <br>What if you say , the flavor I want is "<i>Cappuccino, and all the money I have</i>" (Weird flavor name). 
-<br>The coffee guy says like a mechanical bot, <i> Here is your "<b>Cappuccino, and all the money I have</b>", Enjoy!</i>. Fortunately , in real life people are smart, and this would give you nothing more than a confused look from the coffee guy.
+<br>The coffee guy says like a mechanical bot, <i> Here is your "<b>Cappuccino, and all the money I have</b>", Enjoy!</i>. Fortunately , in real life people are smart, and this would give you nothing more than a confused look.
 
 <p> Unfortunately devices and systems do as they are programmed, they do not know the concept of context per say. They rely on smart programmers to prevent them from being exploited. Injection is nothing but this kind of exploit, in the simplest of sense, and the definitive statement for web security is <b><u>"All user Input is dangerous"</u></b></p>
 
