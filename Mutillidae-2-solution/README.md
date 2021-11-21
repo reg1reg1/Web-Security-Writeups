@@ -61,5 +61,4 @@ allow_url_include = On
 
 I will keep adding more solutions as I find them.
 
-Below are a list of blogs and youtube channels , one should definitely follow for good quality info sec
-content. 
+
