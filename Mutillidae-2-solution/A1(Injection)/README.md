@@ -9,7 +9,7 @@ Now , what is demonstrated here is in no way a security bug, but just a clever h
 <br>Exactly,<i>Jack</i> Killed <i>by Me</i>.Ignoring how the message will be interpreted when Player 2 kills Player 1, this message will ruin Player1's mood quite a bit.
 </p>
 
-<p>Injections in practice are exactly like this, taking something out of context to get/access to something we should not have.</p> 
+<p>Injections in practice (In general computer hacking) is exactly like this, coercing the machine/system into taking something out of context to get/access to something we should not have.</p> 
 
 <p>If the guy at the coffee shop asks you, "Which coffee?", the expected answer from you will be a flavor , say <i> Capuccino</i>. 
 <br>What if the coffee guy is required by some weird rule to give you coffee if it exists. 
