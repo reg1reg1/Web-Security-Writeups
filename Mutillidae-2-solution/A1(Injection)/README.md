@@ -2,7 +2,7 @@
 <h1>Injection</h1>
 
 <p><i>Injection</i> refers to the process of executing an attack by using the context of interpretation to the attackers advantage. We "inject" something so that the context it is being interpreted in causes it to misbehave and give the attacker some reward. </p>
-<p> <u>Example<u>: Say I design a counter-strike game. I display kills like <b>&ltPlayer1&gt</b> killed <b>&ltPlayer2&gt</b>. 
+<p> <u>Example<u>: Say we have an FPS game which displays kills/frags like <b>&ltPlayer1&gt</b> killed <b>&ltPlayer2&gt</b>. 
 Now , what I am about to demonstrate is in no way a security bug, but just a clever hack to cause a misinterpretation of the sentence. Say Player 1 chooses his name which is something innocous like "Jack" and Player 2,chooses his name as "by Me". 
 </p>
 <p>Now when Player1 kills Player 2, what does the message read? 
